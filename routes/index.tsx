@@ -1,3 +1,5 @@
+/// <reference lib="deno.unstable" />
+
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
 
