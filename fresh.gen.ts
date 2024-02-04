@@ -5,6 +5,7 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_save_subscription_index from "./routes/api/save-subscription/index.ts";
 import * as $api_test from "./routes/api/test.ts";
 import * as $api_users_index from "./routes/api/users/index.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
@@ -18,6 +19,7 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/api/save-subscription/index.ts": $api_save_subscription_index,
     "./routes/api/test.ts": $api_test,
     "./routes/api/users/index.ts": $api_users_index,
     "./routes/greet/[name].tsx": $greet_name_,
