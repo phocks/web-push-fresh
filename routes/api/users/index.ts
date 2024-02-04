@@ -8,6 +8,7 @@ export const handler: Handlers = {
       headers: { "Content-Type": "application/json" },
     });
   },
+  
   async POST(req, _ctx) {
     const user = (await req.json());
     const userKey = ["user", user.id];
