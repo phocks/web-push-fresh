@@ -10,19 +10,16 @@ export const handler: Handlers = {
     });
   },
   async POST(req) {
-
+    console.log("POST request received");
     // Store the subscription in the database
     const subscription = await req.json();
     await kv.set(["subscription", "ada"], subscription);
-
 
     return new Response(JSON.stringify({ message: "success" }), {
       headers: { "Content-Type": "application/json" },
     });
   },
 };
-
-
 
 // const express = require('express')
 // const cors = require('cors')
