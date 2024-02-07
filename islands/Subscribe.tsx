@@ -41,8 +41,8 @@ export default function Subscribe(props) {
        main = async () => {
         console.log("main")
         check();
-        const swRegistration = await registerServiceWorker();
         const permission = await requestNotificationPermission();
+        const swRegistration = await registerServiceWorker();
       };
       // main(); we will not call main in the beginning.
     }

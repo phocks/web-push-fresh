@@ -1,4 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
+import { ulid } from "https://deno.land/x/ulid/mod.ts";
+import { wipeKvStore } from "https://deno.land/x/kv_utils/mod.ts";
 
 const kv = await Deno.openKv();
 
@@ -11,11 +13,24 @@ export const handler: Handlers = {
   },
   async POST(req) {
     console.log("POST request received");
+
+    // await wipeKvStore();
+
     // Store the subscription in the database
     const subscription = await req.json();
-    await kv.set(["subscription", "ada"], subscription);
+    await kv.set(["subscription", ulid()], subscription);
 
-    return new Response(JSON.stringify({ message: "success" }), {
+    console.log("Subscription saved to database", subscription);
+
+    const entries = kv.list({ prefix: ["subscription"] });
+
+    for await (const entry of entries) {
+      console.log(entry.key);
+      console.log(entry.value);
+      console.log(entry.versionstamp);
+    }
+
+    return new Response(JSON.stringify({ json: subscription }), {
       headers: { "Content-Type": "application/json" },
     });
   },
